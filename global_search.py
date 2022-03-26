@@ -124,3 +124,85 @@ A = list(map(int,input().split()))
 most_common = max(A, key=A.count)
 print(most_common)
 
+#### 数字の全探索 ####
+### 2-1 ###
+# 1 以上 N 以下の整数のうち、2 でも 3 でも 5 でも割り切れない数の個数を数えるプログラムを作成してください。
+
+N = int(input())
+
+count = 0
+
+for i in range (1, N+1):  #1からN+1未満(N以下)の整数iを順に調べる処理
+    if i%2 != 0 and i%3 !=0 and i%5 !=0:
+        count += 1
+
+print(count)
+
+### 2-2 ###
+# N の約数の個数を数えるプログラムを作成してください。
+#ただし N の約数とは「 N を割り切ることのできる 1 以上の整数」のことです。
+
+N = int(input())
+
+count = 0
+
+for i in range (1,N+1):
+    if N%i == 0:
+        count += 1
+
+print(count)
+
+### 2-3 ###
+#整数 N が素数かどうかを判定するプログラムを作成してください。
+#ただし次の条件を満たすとき「 N は素数である」と言います。
+#・N は 2 以上の整数である
+#・N を割り切ることのできる 1 より大きい整数は N のみである
+
+N = int(input())
+
+if N == 1:  # 1 は素数ではないため
+    print("No")
+else:
+    is_prime = True
+    for i in range (2,N): #2以上N-1以下の数でNを順番に割る
+        if N%i == 0:
+            is_prime = False
+
+    if is_prime:
+       print("Yes")
+    else:
+       print("No")
+
+### 2-4 ###
+# 整数 A と B の最大公約数を出力するプログラムを作成してください。
+# ただし次の条件を満たすとき「 X は A と B の最大公約数である」と言います。
+# 条件：X は A も B も割り切る 1 以上の整数の中で最大のものである
+
+A, B = map(int,input().split())
+
+ans = 0
+for i in range(1,min(A,B)+1):
+    if A % i == 0 and B % i == 0:
+        ans = i
+
+print(ans)
+
+### 2-5 ###
+# 正の整数 N が与えられます。 1 以上 N 以下の整数 i について、次の問題に答えてください。
+
+#・ i が 3 でも 5 でも割り切れるならば FizzBuzz を出力し、
+#・それ以外で i が 3 で割り切れるならば Fizz を出力し、
+#・それ以外で i が 5 で割り切れるならば Buzz を出力し、
+#・i がどちらでも割り切れないならば i 自身を出力してください。
+
+N = int(input())
+
+for i in range(1,N+1):
+    if i%3 == 0 and i%5 == 0:
+        print("FizzBuzz")
+    elif i%3 == 0:
+        print("Fizz")
+    elif i%5 == 0:
+        print("Buzz")
+    else:
+        print(i)
