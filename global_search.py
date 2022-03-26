@@ -206,3 +206,91 @@ for i in range(1,N+1):
         print("Buzz")
     else:
         print(i)
+
+
+### 文字列の全探索 ###
+### 3-1 ###
+# 英小文字からなる文字列 S と、英小文字 c が与えられます。
+# 文字列 S の中に c が含まれるかどうかを答えるプログラムを作成してください。
+
+S = input()
+c = input()
+
+N = len(S)
+
+flag = False
+for i in range(N):
+    if S[i] == c:
+        flag = True
+
+if flag:
+    print("Yes")
+else:
+    print("No")
+
+
+### 3-2 ###
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S が回文かどうかを判定するプログラムを作成してください。 なお文字列 S が回文であるとは、S を逆から読んでも S になることを言います。
+
+S = input()
+
+w = "" #空の文字列を用意する
+for i in S:
+    w = i + w # iをwに代入していく
+
+if S == w:
+    print("Yes")
+else:
+    print("No")
+
+
+### 3-3 ###
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S 中に「連続する 2 文字が同じ文字である箇所」が何個あるかを答えるプログラムを作成してください。
+
+S = input()
+
+N = len(S)
+
+count = 0
+for i in range (N-1): #i を 0 から N−2 まで以下を繰り返す
+    if S[i] == S[i+1]:
+       count += 1
+
+print(count)
+
+### 3-4 ###
+#英小文字からなる長さ N の文字列 S, T が与えられます。
+#文字列 S の何文字かを書き換えることで、文字列 T に一致させたいものとします。 置き換える必要のある文字数を答えるプログラムを作成してください。
+
+N = int(input())
+S = input()
+T = input()
+
+count = 0
+for i in range(N):
+   if S[i] != T[i]:
+       count += 1
+
+print(count)
+
+### 3-5 ###
+# 英小文字からなる文字列 S, T が与えられます。
+# 文字列 S の連続する文字列を抜き出すことで、 文字列 T と一致させることができるかどうかを答えるプログラムを作成してください。
+
+S = input()
+T = input()
+
+N = len(S)
+M = len(T)
+
+flag = False
+for i in range(N-M+1): #0からN-Mまで以下を繰り返す
+    if S[i:i+M] == T: #M文字分の文字列を取り出して、Tと比較する
+        flag = True
+
+if flag:
+    print("Yes")
+else:
+    print("No")
