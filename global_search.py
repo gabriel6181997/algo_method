@@ -125,6 +125,7 @@ most_common = max(A, key=A.count)
 print(most_common)
 
 #### 数字の全探索 ####
+
 ### 2-1 ###
 # 1 以上 N 以下の整数のうち、2 でも 3 でも 5 でも割り切れない数の個数を数えるプログラムを作成してください。
 
@@ -209,6 +210,7 @@ for i in range(1,N+1):
 
 
 ### 文字列の全探索 ###
+
 ### 3-1 ###
 # 英小文字からなる文字列 S と、英小文字 c が与えられます。
 # 文字列 S の中に c が含まれるかどうかを答えるプログラムを作成してください。
@@ -294,3 +296,105 @@ if flag:
     print("Yes")
 else:
     print("No")
+
+### 二重ループの全探索 ###
+
+### 4-1 ###
+# N 個の整数 A0 ,A1,…,AN−1が与えられます。
+# N 個の整数の中に素数がいくつあるか調べるプログラムを作成してください。
+
+N = int(input())
+A = list(map(int,input().split()))
+
+counter = 0
+for x in A:
+    is_prime = True
+    if x == 1:
+        is_prime = False
+    else:
+        for i in range(2,x):
+            if x%i == 0:
+                is_prime = False
+    if is_prime:
+        counter += 1
+
+print(counter)
+
+### 4-2 ###
+# 1 以上の整数 N, K が与えられます。
+# 1 以上 N 以下の整数の中で約数をちょうど K 個持つ数の個数を調べるプログラムを作成してください。
+
+N, K = map(int, input().split())
+
+count = 0
+for x in range(1, N+1):
+    yaku = 0
+    for i in range(1, x+1):
+        if x%i == 0:
+            yaku += 1
+    if yaku == K:
+        count += 1
+
+print(count)
+
+### 4-3 ###
+# 整数 X を文字列としてみると回文になっているとき、「X は回文数である」と呼ぶことにします。
+# 整数 L, R が与えられるので、L 以上 R 以下の整数の中に回文数がいくつあるか数えるプログラムを作成してください。
+
+L, R = map(int, input().split())
+
+count = 0
+for x in range(L, R+1):
+    S = str(x)
+    flag = True
+    N = len(S)
+    for i in range(N):
+        if S[i] != S[(N-1)-i]:
+            flag = False
+    if flag:
+        count += 1
+
+print(count)
+
+### 4-4 ###
+# 英小文字からなる文字列 S が与えられます。
+# 文字列 S に使われている英小文字の種類数を答えるプログラムを作成してください。
+
+S = input()
+N = len(S)
+
+count = 0
+for x in range(ord('a'), ord('z') + 1): # ord()は文字を数値(unicode)に変換する関数
+     c = chr(x) #chr()はunicode x を示す文字を返す
+     # S に c が含まれるかを調べる
+     flag = False
+     for i in range(N):
+        if S[i] == c:
+            flag = True
+     if flag:
+        count += 1
+
+print(count)
+
+### 4-5 ###
+# 英小文字からなる N個の文字列 S0 ,S1,…,SN−1が与えられます。
+# N 個の文字列のうち回文の個数を数えるプログラムを作成してください。
+
+def is_palindrome(x):
+      flag = True
+      N = len(x)
+      for i in range (N):
+        if x[i] != x[(N-1)-i]:
+            flag = False
+      return flag
+
+
+N = int(input())
+S = [input() for _ in range(N)]
+
+count = 0
+for x in S:
+    if is_palindrome(x):
+        count += 1
+
+print(count)
