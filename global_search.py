@@ -398,3 +398,66 @@ for x in S:
         count += 1
 
 print(count)
+
+### 複数の配列の全探索 ###
+
+### 5-1 ###
+# N 個の整数 A0,A1,…,AN−1と M 個の整数 B0,B1,…,BM−1が与えられます。
+# 次の条件を満たす組 (i,j) の個数を答えるプログラムを作成してください。
+#・i は 0 以上 N−1 以下の整数
+#・j は 0 以上 M−1 以下の整数
+#・Ai>Bj
+
+N, M = map(int,input().split())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+counter = 0
+for x in A:
+    for y in B:
+        if x > y:
+            counter += 1
+
+print(counter)
+
+### 5-2 ###
+# N 個の整数 A0,A1,…,AN−1と M 個の整数 B0,B1,…,BM−1と整数 K が与えられます。
+# 次の条件を満たす組 (i,j) の個数を答えるプログラムを作成してください。
+# i は 0 以上 N−1 以下の整数
+# j は 0 以上 M−1 以下の整数
+# Ai+Bj =K
+
+N, M, K = map(int,input().split())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+
+counter = 0
+for x in A:
+    for y in B:
+        if x + y == K:
+            counter += 1
+
+print(counter)
+
+### 5-3 ###
+# X 個の整数 A0,A1,…,AX−1と、 Y 個の整数 B0,B1 ,…,BY−1と、 Z 個の整数 C0 ,C1,…,CZ−1が与えられます。
+# 次の条件を満たす組 (i,j,k) の個数を答えるプログラムを作成してください。
+# ・i は 0 以上 X−1 以下の整数
+# ・j は 0 以上 Y−1 以下の整数
+# ・k は 0 以上 Z−1 以下の整数
+# ・Ai+Bj=Ck
+
+X,Y,Z = map(int,input().split())
+A = list(map(int,input().split()))
+B = list(map(int,input().split()))
+C = list(map(int,input().split()))
+
+counter = 0
+for x in A:
+    for y in B:
+        for z  in C:
+            if x+y == z:
+                counter += 1
+
+print(counter)
+
