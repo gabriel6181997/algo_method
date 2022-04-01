@@ -461,3 +461,88 @@ for x in A:
 
 print(counter)
 
+#### ペアの全探索 ####
+
+### 6-1 ###
+# N 個の整数 A0,A1,…,AN−1と整数 K が与えられます。
+# これらの N 個の整数から、和が K 以下となるように 2 つの数を選ぶ方法は何通りあるか求めるプログラムを作成してください。
+# ただし選んだ 2 つの整数の添字 (Aiの i) が等しくなってはいけないものとします。
+
+N, K = map(int,input().split())
+A = list(map(int,input().split()))
+
+counter = 0
+for i in range(N):
+    for j in range(i+1, N):
+        if A[i] + A[j] <= K:
+            counter += 1
+
+print(counter)
+
+### 6-2 ###
+# 2つの整数 L,R が与えられます。
+# L 以上 R 以下の整数の中から、一の位が等しくなるように相異なる 2 つの整数を選ぶ方法は何通りあるか求めるプログラムを作成してください。
+
+L, R = map(int,input().split())
+
+counter = 0
+for i in range(L, R+1):
+    for j in range(i+1, R+1):
+        if i%10 == j%10:
+            counter += 1
+
+print(counter)
+
+### 6-3 ###
+# N 個の整数 A0,A1,…,AN−1が与えられます。
+# 以下の条件をみたす整数の組 (x,y,z) の個数を求めるプログラムを作成してください。
+# ・Ax ,Ay ,Azの最大値は Ayである。
+# ・0≤x<y<z≤N−1
+
+N = int(input())
+A = list(map(int,input().split()))
+
+counter = 0
+for x in range(N):
+    for y in range(x+1, N):
+        for z in range(y+1, N):
+            if max(A[x], A[y], A[z]) == A[y]:
+                counter += 1
+
+print(counter)
+
+### 6-4 ###
+# N 個の文字列 S0,S1,…,SN−1が与えられます。
+# これらの N 個の文字列の中に同じ 2 つの文字列があるかどうかを判定するプログラムを作成してください。
+
+N = int(input())
+S = [input().split() for _ in range(N)]
+
+flag = False
+for i in range(N):
+    for j in range(i+1, N):
+        if S[i] == S[j]:
+            flag = True
+
+if flag:
+    print("Yes")
+else:
+    print("No")
+
+### 6-5 ###
+# 整数 N と長さ N の文字列 S が与えられます。
+# 以下の条件をみたす整数の組 (x,y) の個数を数えるプログラムを作成してください。
+# ・S の x 文字目と y 文字目は等しい
+# ・0≤x<y≤N−1
+# ただし、S の先頭の文字が 0 文字目であるとします。
+
+N = int(input())
+S = input()
+
+counter = 0
+for x in range(N):
+    for y in range(x+1, N):
+        if S[x] == S[y]:
+            counter += 1
+
+print(counter)
