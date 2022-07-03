@@ -218,8 +218,22 @@ print(re.sub(r'asian(?=( [a-z]+){5,})', 'global', S))
 import re
 S = input()
 
-search = re.search(algo(?!method)(?!rithm)[a-z]{5,})
+reg = "algo(?!method)(?!rithm)[a-z]{5,}"
+
+search = re.search(reg, S)
 if search:
     print("Yes")
 else:
     print("No")
+
+### 4-4 ###
+# typical_snake_case (再度確認の必要あり)
+
+import re
+
+n, y, m = map(int,input().split())
+for _ in range(n):
+    s = input()
+    match_obj = re.search(r'[^_]+(?=_'+ str(y).zfill(4) + str(m).zfill(2) +'\d{2}\.pdf)', s)
+    if match_obj:
+        print(match_obj.group(0))
