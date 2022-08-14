@@ -187,3 +187,50 @@ def build_heap(v):
 build_heap(A)
 
 print(*A)
+
+### 1-8 ###
+# ヒープソート
+
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+
+# 要素の整理
+def align_elements(v, start_pos, end_pos):
+    k = start_pos
+    while True:
+        # ノードが存在しない場合は０を仮置きする
+        left = v[2*k+1] if 2*k+1 < end_pos else 0
+        right = v[2*k+2] if 2*k+2 < end_pos else 0
+        if left == 0 and right == 0: #子ノードが存在しない
+            break
+        elif v[k]>= left and v[k]>= right: #最大値がv[k]
+            break
+        elif left >= right: #最大値がv[2*k+1]
+            v[k], v[2*k+1] = v[2*k+1], v[k]
+            k = 2*k+1
+        else: #最大値がv[2*k+2]
+            v[k], v[2*k+2] = v[2*k+2], v[k]
+            k = 2*k+2
+
+# 二分ヒープの構築
+def build_heap(v):
+    for x in range(len(v)//2, -1, -1):
+        align_elements(v,x,len(v))
+
+# ヒープの根を削除する（根の要素をソート済の位置に移動させる）
+def delete_root(v,end_pos):
+    v[0],v[end_pos] = v[end_pos], v[0]
+    align_elements(v,0,end_pos)
+
+# 二分ヒープの構築
+build_heap(A)
+
+# ソートを実装に行う
+for i in range(N-1,0,-1):
+    delete_root(A,i)
+    # i=M の操作が終了した時点での配列の様子を出力
+    if i==M:
+        print(*A)
+
+# 最終的な配列Aの様子を出力
+print(*A)
