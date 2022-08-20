@@ -285,3 +285,13 @@ A.sort()
 # それぞれ答える
 for x in X:
     print(A[x])
+
+### 2-3 ###
+# 総和の最大値
+
+N,K = map(int,input().split())
+A = list(map(int,input().split()))
+
+A.sort(reverse = True)
+
+print(sum(A[0:K]))
