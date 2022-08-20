@@ -257,3 +257,16 @@ for a in A:
     B[acc[a]] = a
 
 print(*B)
+
+### 2-1 ###
+# 中央値
+
+N = int(input())
+A = list(map(int,input().split()))
+
+A.sort()
+
+if N%2 == 1:
+    print(A[(N-1)//2])
+else:
+    print((A[N//2-1]+A[N//2])/2)
