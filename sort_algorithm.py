@@ -270,3 +270,18 @@ if N%2 == 1:
     print(A[(N-1)//2])
 else:
     print((A[N//2-1]+A[N//2])/2)
+
+### 2-2 ###
+# 各要素の平均
+
+# 入力
+N, M = map(int, input().split())
+A = list(map(int, input().split()))
+X = list(map(int, input().split()))
+
+# A をソート
+A.sort()
+
+# それぞれ答える
+for x in X:
+    print(A[x])
