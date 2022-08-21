@@ -311,3 +311,20 @@ for i in range(N-K+1):
     result = min(result, diff)
 
 print(result)
+
+### 2-5 ###
+# ごはんを買う
+
+N,K = map(int,input().split())
+S = [tuple(map(int, input().split())) for i in range(N)]
+
+S.sort()
+
+res = 0
+
+for(A,B) in S:
+    num = min(K,B)
+    K -= num
+    res += A * num
+
+print(res)
