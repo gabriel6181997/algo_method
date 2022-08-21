@@ -295,3 +295,19 @@ A = list(map(int,input().split()))
 A.sort(reverse = True)
 
 print(sum(A[0:K]))
+
+### 2-4 ###
+# 差の最小値
+
+N,K = map(int,input().split())
+A = list(map(int, input().split()))
+
+A.sort()
+
+result = 2 ** 60
+
+for i in range(N-K+1):
+    diff = A[i+K-1] - A[i]
+    result = min(result, diff)
+
+print(result)
